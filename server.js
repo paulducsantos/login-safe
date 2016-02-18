@@ -49,7 +49,7 @@ app.post('/register', function(req, res) {
     var password = sha256('porkchopsandwiches' + req.body.password);
     User.create({username: username, password: password}).then(function(user) {
       req.session.authenticated = user;
-      res.redirect('/');
+      res.redirect('/?msg=' + 'youre logged in');
     }).catch(function(err) {
       console.log(err);
       res.redirect('/?msg=' + err.message);
