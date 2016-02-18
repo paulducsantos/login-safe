@@ -90,6 +90,11 @@ app.get('/success', function(req, res) {
   }
 });
 
+app.get('/logout', function(req, res) {
+  req.session.authenticated = false;
+  res.redirect('/');
+})
+
 sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("LISTNEING!");
